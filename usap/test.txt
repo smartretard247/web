@@ -1,0 +1,1 @@
+Hello $name. You're total is $1.50 for $quantity items.

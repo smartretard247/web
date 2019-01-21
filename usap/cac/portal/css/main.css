@@ -1,0 +1,18 @@
+.bevel
+{
+    BORDER-BOTTOM: #23094C 2px solid;
+    BORDER-LEFT: #C1B4D6 2px solid;
+    BORDER-RIGHT: #23094C 2px solid;
+    BORDER-TOP: #C1B4D6 2px solid
+}
+.copyright {
+	text-decoration: none;
+}
+.title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #FFFFFF;
+}

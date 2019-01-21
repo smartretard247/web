@@ -1,0 +1,176 @@
+<?
+include("f:/usap/config.php");
+//include database connection
+require("f:/usap/lib-database.php");
+
+
+
+//cac registration wizard
+
+if($_SERVER['CERT_SERIALNUMBER'] == "") {
+?>
+alert("You must insert your CAC to continue");
+javascript:window.close();
+
+<?
+exit();
+}
+
+if ($_POST['action'] == "Continue") {
+$query = "select u.change_password, u.user_id, up.permission_id from user_permissions up, users u where u.user_id = up.user_id and u.login = '" . $_POST["login"] . "' and u.password = password('" . $_POST["password"] . "') group by up.permission_id";
+//echo($query);
+$result = mysql_query($query);
+
+//if error in query, send to error page
+if(mysql_error())
+{
+    echo "error: " . mysql_error();
+    exit();
+}
+
+//determine how many rows were returned
+$num_rows = mysql_num_rows($result);
+
+//if no rows were returned, send to error page
+if($num_rows < 1)
+{
+ 
+    header("location: cacRegister.php?page=1");
+    exit();
+}
+
+$row = mysql_fetch_array($result);
+
+
+$_SESSION['CACREG_userid'] = $row['user_id'];
+//$_SESSION['CACREG_userid'] = "1";
+
+
+header("location: cacRegister.php?page=2&userID=" . $row['user_id']);
+exit();
+}
+
+if ($_GET['page'] == "1") {
+?>
+<html>
+<head>
+<title>USAP - CAC Registration Wizard</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../css.php">
+</head>
+
+<body class="body" onload="document.login.login.focus();">
+<form method="post" action="https://147.51.132.61/cac/cacRegister.php" name="cacReg">
+
+  <table width="70%" border="1" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td>
+      <p align="center"><font size="7"><b><i>CAC Registration Portal</i></b></font></p>
+      <p align="center"><font size="5"><strong>Unit Soldier Administration Program</strong></p>
+      <table width="90%" border="1" cellspacing="2" cellpadding="2" align="center">
+        <tr>
+          <td>
+<center>
+<p><i>Please provide your current credentials which will be associated with the currently inserted card.</i></p>
+</center>
+  <table width="40%" border="0" cellspacing="2" cellpadding="2" align="center">
+
+              <tr>
+                <td width="50%" align="right">Login:</td>
+                <td width="50%">
+                    <input type="text" name="login" size="11" class="text_box" value="">
+                </td>
+              </tr>
+              <tr>
+                <td width="50%" align="right">Password:</td>
+                <td width="50%">
+                    <input type="password" name="password" size="11" class="text_box" value="">
+                </td>
+              </tr>
+
+            </table>
+
+            </td>
+
+        </tr>
+
+        <tr class="heading">
+          <td>
+            <div align="center">
+                <input type="submit" name="action" value="Continue" class="button">
+            </div>
+          </td>
+        </tr>
+        <tr>
+           
+      </table>
+
+
+
+<?
+exit();
+}
+
+if ($_GET['page'] == "2") {
+?>
+<html>
+<head>
+<title>CACREG - Step2 (Verify)</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../css.php">
+</head>
+
+<body class="body" onload="document.login.login.focus();">
+<table 
+<table width="70%" border="1" cellspacing="2" cellpadding="2" align="center">
+  <tr>
+    <td>
+      <p align="center"><font size="5"><strong>Please verify information about your CAC and click Finish.</strong></p>
+    <table width="40%" border="1" cellspacing="2" cellpadding="2" align="center">
+
+              <tr>
+                <td width="26%" align="right">CAC ID:</td>
+                <td width="75%">
+                    <textarea name="ignore" rows="1" cols="60">
+			<? echo $_SERVER['CERT_SERIALNUMBER'];?>
+		    </textarea>
+                </td>
+              </tr>
+<tr>
+                <td width="50%" align="right">UPN:</td>
+                <td width="50%">
+                    
+		<textarea name="unique_name" rows="4" cols="60">
+		<?
+		echo $_SERVER['CERT_SUBJECT'];
+		?>
+		</textarea>
+
+                </td>
+              </tr>
+</table>
+<center> <a href="cacRegister.php?page=3&userID= <? echo $_GET['userID']; ?> ">**Finish**</a>
+</body>
+</html>
+<?
+exit();
+}
+
+if ($_GET['page'] == "3") {
+?>
+<html>
+<head>
+<title>CAC Registration Success!</title>
+</head>
+<body>
+<strong><center>CAC Registration was a success!</center></strong></p>
+<center><i>You may now use the "CAC Logon" Link on the USAP Login page to login without a username and password. If you're Administrator configured your account to require the use of a CAC, you will be prompted for your certificate if you try to login using a username and a password automatically.</i></p>
+<center>Click here to <a href="javascript:window.close();">Close This Window.</a>
+<?
+echo $_SESSION['CACREG_userid'];
+exit();
+}
+
+
+
+?>

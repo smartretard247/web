@@ -1,0 +1,1 @@
+<?php phpinfo (INFO_ALL - INFO_CREDITS - INFO_LICENSE) ?>

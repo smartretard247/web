@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+  <title>select
+  concat(c.company,'-',if(0+b.battalion=0,b.battalion,0+b.battalion)) as Unit,
+  sum(if(phase='IV',1,0)) as 'Phase IV',
+  sum(if(phase='V',1,0)) as 'Phase V',
+  sum(if(phase='V+',1,0)) as 'Phase V+',
+  sum(if(phase NOT IN ('IV','V','V+'),1,0)) as 'Other Phase',
+  sum(if(phase = 'IV' AND m.arrival_date != date_phaseiv,1,0)) AS 'Phase IV Phaseback',
+  sum(if(phase='V' AND date_phasev > date_phaseva AND date_phaseva != 0,1,0)) AS 'Phase V Phaseback',
+  sum(if(phase='IV' AND m.arrival_date + INTERVAL 28 DAY < CURDATE(),1,0)) AS 'Past Phase V Date',
+  sum(if(phase='V' AND m.arrival_date + INTERVAL 77 DAY < CURDATE(),1,0)) AS 'Past Phase V+ Date'
+from student, main m, battalion b, company c
+where m.id = student.id and m.pcs=0 and m.pers_type = 'IET' and m.company = c.company_id and m.battalion = b.battalion_id
+group by m.battalion, m.company</title>
+  <meta name="GENERATOR" content="MySQL-Front 2.5">
+  <style type="text/css"><!--
+    .header {background-color: #D4D0C8;}
+    th {vertical-align: top;}
+    td {vertical-align: top; background-color: #FFFFFF;}
+  --></style>
+</head>
+
+<body>
+
+<table border=1>
+  <tr class="header">
+    <th>Unit</th>
+    <th>Phase IV</th>
+    <th>Phase V</th>
+    <th>Phase V+</th>
+    <th>Other Phase</th>
+    <th>Phase IV Phaseback</th>
+    <th>Phase V Phaseback</th>
+    <th>Past Phase V Date</th>
+    <th>Past Phase V+ Date</th>
+  </tr>
+  <tr>
+    <td>SSD-BDE&nbsp;</td>
+    <td>112&nbsp;</td>
+    <td>11&nbsp;</td>
+    <td>21&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>84&nbsp;</td>
+    <td>11&nbsp;</td>
+  </tr>
+  <tr>
+    <td>B-73&nbsp;</td>
+    <td>71&nbsp;</td>
+    <td>50&nbsp;</td>
+    <td>118&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>7&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>49&nbsp;</td>
+    <td>9&nbsp;</td>
+  </tr>
+  <tr>
+    <td>C-73&nbsp;</td>
+    <td>73&nbsp;</td>
+    <td>75&nbsp;</td>
+    <td>71&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>24&nbsp;</td>
+    <td>8&nbsp;</td>
+  </tr>
+  <tr>
+    <td>B-369&nbsp;</td>
+    <td>250&nbsp;</td>
+    <td>1&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>5&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>129&nbsp;</td>
+    <td>1&nbsp;</td>
+  </tr>
+  <tr>
+    <td>C-369&nbsp;</td>
+    <td>204&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>158&nbsp;</td>
+    <td>0&nbsp;</td>
+  </tr>
+  <tr>
+    <td>D-369&nbsp;</td>
+    <td>116&nbsp;</td>
+    <td>52&nbsp;</td>
+    <td>103&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>1&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>18&nbsp;</td>
+    <td>3&nbsp;</td>
+  </tr>
+  <tr>
+    <td>E-369&nbsp;</td>
+    <td>157&nbsp;</td>
+    <td>33&nbsp;</td>
+    <td>9&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>127&nbsp;</td>
+    <td>33&nbsp;</td>
+  </tr>
+  <tr>
+    <td>B-447&nbsp;</td>
+    <td>14&nbsp;</td>
+    <td>50&nbsp;</td>
+    <td>91&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>3&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>7&nbsp;</td>
+    <td>8&nbsp;</td>
+  </tr>
+  <tr>
+    <td>C-447&nbsp;</td>
+    <td>141&nbsp;</td>
+    <td>74&nbsp;</td>
+    <td>23&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>2&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>83&nbsp;</td>
+    <td>12&nbsp;</td>
+  </tr>
+  <tr>
+    <td>D-447&nbsp;</td>
+    <td>150&nbsp;</td>
+    <td>54&nbsp;</td>
+    <td>22&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>88&nbsp;</td>
+    <td>8&nbsp;</td>
+  </tr>
+  <tr>
+    <td>E-447&nbsp;</td>
+    <td>59&nbsp;</td>
+    <td>49&nbsp;</td>
+    <td>78&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>2&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>12&nbsp;</td>
+    <td>17&nbsp;</td>
+  </tr>
+  <tr>
+    <td>B-551&nbsp;</td>
+    <td>181&nbsp;</td>
+    <td>4&nbsp;</td>
+    <td>3&nbsp;</td>
+    <td>1&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>1&nbsp;</td>
+    <td>128&nbsp;</td>
+    <td>4&nbsp;</td>
+  </tr>
+  <tr>
+    <td>C-551&nbsp;</td>
+    <td>34&nbsp;</td>
+    <td>55&nbsp;</td>
+    <td>197&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>6&nbsp;</td>
+    <td>2&nbsp;</td>
+  </tr>
+  <tr>
+    <td>D-551&nbsp;</td>
+    <td>75&nbsp;</td>
+    <td>91&nbsp;</td>
+    <td>35&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>0&nbsp;</td>
+    <td>46&nbsp;</td>
+    <td>16&nbsp;</td>
+  </tr>
+</table>
+
+<br><br>
+<i>generated 7/22/2003 9:56:46 AM by <a href="http://www.mysqlfront.de/">MySQL-Front 2.5</a></i>
+
+</body></html>

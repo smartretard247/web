@@ -1,0 +1,54 @@
+<html>
+
+<head><title>Hide/Show with Image </title>
+<script type="text/javascript">
+<!--
+
+function basename(path) {
+    return path.replace(/\\/g,'/').replace( /.*\//, '' );
+}
+
+
+function toggle_visibility(id) {
+  var e = document.getElementById(id);
+  if(e.style.display == 'block')
+     e.style.display = 'none';
+   else
+     e.style.display = 'block';
+}
+
+function imgswap(imgid) {
+  if (basename(document.getElementById(imgid).src) == "minus.png") 
+    document.getElementById(imgid).src="img/icons/plus.png";
+  else
+    document.getElementById(imgid).src="img/icons/minus.png";
+}
+//-->
+</script>
+</head>
+<body>
+
+
+
+
+<table bgcolor="orange" width="20%" style="border-style: solid; border-color: black; margin-bottom: 1px; border-width: 2px;">
+<tr>
+  <td width="75%" style="cursor: default;">Foo Data</td><td align="right"><img id="Img1" src="img/icons/minus.png"  onClick="toggle_visibility('foo'); imgswap('Img1')"/></td>
+</tr>
+</table>
+<div id="foo">This is foo<br/>
+This is foo<br/>
+This is foo<br/>
+This is foo<br/>
+This is foo<br/>
+This is foo<br/>
+This is foo<br/>
+</div>
+<table bgcolor="orange" width="20%" style="border-style: solid; border-color: black; margin-bottom: 1px; border-width: 2px;">
+<tr>
+  <td width="75%" style="cursor: default;">Personal Data</td><td align="right"><img id="Img2" src="img/icons/plus.png"   onClick="toggle_visibility('pdata'); imgswap('Img2')"/></td>
+</tr>
+</table>
+<div id="pdata">This is pdata</div>
+
+</body></html>

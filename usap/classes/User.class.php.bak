@@ -1,0 +1,228 @@
+<?
+
+/***********************
+* This class contains functions
+* to create and edit users
+* and permissions
+************************/
+
+class User
+{
+    var $Battalion = array();
+    var $Company = array();
+    var $User_Permission;
+    var $Permission;
+    var $P_Comment;
+    var $User;
+
+    function User()
+    {
+        $this->Load_Units();
+        $this->Load_Permissions();
+
+        return;
+    }
+
+    function Load_Permissions()
+    {
+        $this->Permission = array();
+        $this->P_Comment = array();
+
+        $result = mysql_query("SELECT p.Permission_ID, p.Permission, p.Comment FROM Permissions p ORDER BY Permission_ID ASC") or die("Permission SELECT error: " . mysql_error());
+
+        while($row = mysql_fetch_assoc($result))
+        {
+            $this->Permission[$row['Permission_ID']] = $row['Permission'];
+            $this->P_Comment[$row['Permission_ID']] = $row['Comment'];
+        }
+
+        return;
+    }
+
+    function Load_Units()
+    {
+        $result = mysql_query("SELECT b.Battalion, b.Battalion_ID FROM Battalion b ORDER BY b.Battalion ASC") or die("Load Battalion error: " . mysql_error());
+
+        while($row = mysql_fetch_assoc($result))
+        { $this->Battalion[$row['Battalion_ID']] = $row['Battalion']; }
+
+        $result = mysql_query("SELECT c.Company, c.Company_ID FROM Company c ORDER BY c.Company ASC") or die("Load Company error; " . mysql_error());
+
+        while($row = mysql_fetch_assoc($result))
+        { $this->Company[$row['Company_ID']] = $row['Company']; }
+
+        return;
+    }
+
+    function Load_User_Permissions($ID)
+    {
+        if(isset($this->User_Permission)) { unset($this->User_Permission); }
+        $this->User_Permission = array();
+        $ID = (int)($ID);
+
+        $result = mysql_query("SELECT p.Permission_ID, up.Battalion_ID, up.Company_ID "
+            ."FROM Permissions p LEFT JOIN User_Permissions up ON p.Permission_ID = up.Permission_ID WHERE "
+            ."(up.User_ID = " . $ID . " || up.Permission_ID IS NULL) ORDER BY p.Permission_ID") or die("Load User Permissions Error: " . mysql_error());
+
+        while($row = mysql_fetch_assoc($result))
+        { $this->User_Permission[$row['Permission_ID']][$row['Battalion_ID']][$row['Company_ID']] = 1; }
+
+        return;
+    }
+
+    function Draw_Permission_Box($Permission)
+    {
+        $retval = "";
+
+        $Permission = (int)($Permission);
+        $Num_Companies = count($this->Company);
+
+        if(isset($this->Permission[$Permission]))
+        {
+            $retval .= "<table width='20%' border='1' cellspacing='0' cellpadding='1' align='center'>\n";
+            $retval .= "<tr bgcolor='orange'><td><div align='center'><font size='+1'><strong>P" . $Permission . ": " . $this->Permission[$Permission] . "</strong></font></div></td></tr>\n";
+
+            if(strlen($this->P_Comment[$Permission]) > 0)
+            { $retval .= "<tr><td><div align='center'><font size='-1'><i>" . $this->P_Comment[$Permission] . "</i></font></div></td></tr>\n"; }
+
+            foreach($this->Battalion as $Battalion_ID => $Battalion_Text)
+            {
+                $retval .= "<tr><td align='center'>\n";
+                $retval .= "<table border='0' cellspacing='0' cellpadding='1' align='center'>\n";
+                $retval .= "<tr><td align='center' colspan='" . $Num_Companies . "'><strong>" . $Battalion_Text . "</strong></div></td></tr>\n";
+                $retval .= "<tr>\n";
+
+                foreach($this->Company as $Company_ID => $Company_Text)
+                {
+                    $retval .= "<td align='center'><input type='checkbox' name='Unit[]' value='" . $Permission . "-" . $Battalion_ID . "-" . $Company_ID . "'";
+                    if(isset($this->User_Permission[$Permission][$Battalion_ID][$Company_ID]))
+                    { $retval .= " checked "; }
+                    $retval .= ">" . $Company_Text . "</td>\n";
+                }
+
+                $retval .= "</tr>\n";
+                $retval .= "</table>\n";
+            }
+
+            $retval .= "</td></tr>\n";
+            $retval .= "</table>\n";
+        }
+
+        return $retval;
+    }
+
+    function Draw_All_Permission_Boxes($Num_Across=1)
+    {
+        global $_CONF;
+
+        $retval = "";
+        $count = 1;
+        $NP = count($this->Permission) - 1;
+        $Width = floor(100 / $Num_Across);
+
+        $retval .= "<br><form method='post' action='" . $_SERVER['SCRIPT_NAME'] . "'>\n";
+        $retval .= "<input type='hidden' name='ID' value='" . $this->User . "'>\n";
+        $retval .= "<table width='98%' border='0' cellpadding='3' cellspacing='3' align='center'>\n";
+        $retval .= "<tr><td colspan='" . $Num_Across . "'><table border='1' align='center'><tr><td><input type='checkbox' name='Delete_User' value='1'> Delete this User</td></tr></table></td></tr>\n";
+        $retval .= "<tr>\n";
+
+        foreach($this->Permission as $Permission => $Permission_Text)
+        {
+            $retval .= "<td width='" . $Width . "%' align='center'>\n";
+            $retval .= $this->Draw_Permission_Box($Permission);
+            $retval .= "</td>\n";
+            if($count % $Num_Across == 0)
+            { $retval .= "</tr><tr>\n"; }
+            $count++;
+        }
+
+        switch(--$count % $Num_Across)
+        {
+            case 1:
+                $retval .= "<td>&nbsp;</td>\n";
+            case 2:
+                $retval .= "<td>&nbsp;</td>\n";
+                break;
+        }
+
+        $retval .= "</tr>\n";
+        $retval .= "<tr><td align='center' colspan='" . $Num_Across . "'><br><input type='submit' class='button' name='UP_Submit' value='Update User Permissions'></td></tr>\n";
+        $retval .= "</table>\n";
+        $retval .= "</form>\n";
+
+        return $retval;
+    }
+
+    function Set_User($ID)
+    {
+        $ID = (int)($ID);
+
+        $this->User = $ID;
+        $this->Load_User_Permissions($ID);
+
+        return;
+    }
+
+    function Process_User_Permissions()
+    {
+        global $_CONF;
+        $retval = "";
+        $count = 0;
+        
+        if(isset($_POST['Delete_User']))
+        {
+            $result = mysql_query("DELETE FROM Users WHERE User_ID = " . $this->User) or die("Delete user error: " . mysql_error());
+            $result = mysql_query("DELETE FROM User_Permissions WHERE User_ID = " . $this->User) or die("Delete User_Permissions error: " . mysql_error());
+            
+            $retval .= "<br><center><strong>User Deleted. Click <a href='" . $_CONF['admin_html'] . "/add_user.php'>here</a> to Create a new User</strong></center>";
+            return $retval;
+        }
+
+        if(isset($_POST['Unit']) && count($_POST['Unit'] > 0))
+        {
+            $Insert = array();
+
+            foreach($_POST['Unit'] as $Unit)
+            {
+                $Split = explode("-",$Unit);
+                $Permission = $Split[0];
+                $Battalion = $Split[1];
+                $Company = $Split[2];
+
+                $Insert[] = "(" . $this->User . "," . $Battalion . "," . $Company . "," . $Permission . ")";
+            }
+            if($count = count($Insert))
+            { $Inserts = implode(",",$Insert); }
+
+        }
+
+        $result = mysql_query("LOCK TABLES User_Permissions WRITE") or die("Failed to lock UP (Write)");
+        $result = mysql_query("DELETE FROM User_Permissions WHERE User_ID = " . $this->User) or die("Failed to Delete UP");
+        if($count)
+        { $result = mysql_query("INSERT INTO User_Permissions (User_ID, Battalion_ID, Company_ID, Permission_ID) VALUES " . $Inserts) or die("Insert User_Permissions error: " . mysql_error()); }
+        $result = mysql_query("UNLOCK TABLES") or die("Failed to UNLOCK tables");
+
+        $this->Load_User_Permissions($this->User);
+
+        $retval .= "<br><center><strong>User Permissions Updated</strong></center>";
+        
+        return $retval;
+    }
+    
+    function User_Info()
+    {
+        $retval = "";
+        
+        $result = mysql_query("SELECT Last_Name, First_Name, Middle_Initial, Rank, RIGHT(SSN,4) AS SSN "
+                            ."FROM Main WHERE ID = " . $this->User) or die("Select User error: " . mysql_error());
+        $row = mysql_fetch_array($result);
+        
+        $retval .= "<br><table border='1' width='70%' align='center' cellspacing='1' cellpadding='3'>\n";
+        $retval .= "<tr>\n";
+        $retval .= "<td bgcolor='orange'><strong><font size='+1'>Edit Permissions For: " . $row['Last_Name'] . ", " . $row['First_Name'] . " " . $row['Middle_Initial'] . ", " . $row['Rank'] . " - " . $row['SSN'] . "</td>\n";
+        $retval .= "</tr>\n";
+        $retval .= "</table>\n";
+        
+        return $retval;
+    }
+}

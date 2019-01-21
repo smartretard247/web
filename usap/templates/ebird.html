@@ -1,0 +1,254 @@
+
+    <SCRIPT language=javascript>
+    var state = 'hidden';
+    var dis = 'none';
+
+    function showhide(layer_ref) {
+
+      /////////////////////////
+      //determine current state
+      /////////////////////////
+      if (document.all)
+      {
+        //IS IE 4 or 5 (or 6 beta)
+        eval( 'state = document.all.' + layer_ref + '.style.visibility;');
+      }
+
+      if (document.layers)
+      {
+        //IS NETSCAPE 4 or below
+        state = document.layers[layer_ref].visibility;
+      }
+
+      if (document.getElementById && !document.all)
+      {
+        maxwell_smart = document.getElementById(layer_ref);
+        state = maxwell_smart.style.visibility;
+      }
+
+      /////////////
+      //swap states
+      /////////////
+      if (state == 'visible')
+      {
+        state = 'hidden';
+        dis = 'none';
+      }
+      else
+      {
+        state = 'visible';
+        dis = 'block';
+      }
+
+      ///////////////
+      //set new state
+      ///////////////
+      if (document.all)
+      {
+        //IS IE 4 or 5 (or 6 beta)
+        eval( 'document.all.' + layer_ref + '.style.visibility = state');
+        eval( 'document.all.' + layer_ref + '.style.display = dis');
+      }
+
+      if (document.layers)
+      {
+        //IS NETSCAPE 4 or below
+        document.layers[layer_ref].visibility = state;
+        document.layers[layer_ref].display = dis;
+      }
+
+      if (document.getElementById && !document.all)
+      {
+        maxwell_smart = document.getElementById(layer_ref);
+        maxwell_smart.style.visibility = state;
+        maxwell_smart.style.display = dis;
+      }
+    }
+    </SCRIPT><div>&bull; <A onclick="showhide('topstories');" href="javascript:void(0);">TOP STORIES</A></div>
+                   <DIV id="topstories" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>1. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329296.html">2 Bombers Kill 5 In Guarded Area In Baghdad</A></B><BR>
+<EM>(New York Times)</EM>...Dexter Filkins<br>Insurgents penetrated the heavily guarded governmental compound in Baghdad on Thursday, setting off a pair of bombs within minutes of each other in the Green Zone and killing 5 people, including at least 3 Americans, and wounding 20 others.<P></UL>
+<UL>
+<B>2. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329278.html">Signs Of Progress Amid Turmoil In Iraq</A></B><BR>
+<EM>(Christian Science Monitor)</EM>...Scott Peterson<br>...But despite continued insecurity, the steady US military pressure against insurgents, coupled with efforts of the Iraqi interim government to negotiate, may be gaining at least some degree of traction.<P></UL>
+<UL>
+<B>3. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329169.html">U.S.-Financed News Channel Asserts Independence</A></B><BR>
+<EM>(Washington Post)</EM>...Ellen McCarthy<br>...Alhurra TV, however, deemed the video too disturbing to air. The story could be told without such graphic images, news directors for the new U.S. government-funded network concluded. Editors at U.S. news channels routinely decide that some images are too graphic to air. But to critics and competitors of Alhurra, its decision was evidence that the young network airs U.S. propaganda.<P></UL>
+<UL>
+<B>4. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329373.html">Syria Agrees To Patrol Border</A></B><BR>
+<EM>(Washington Times)</EM>...Nicholas Kralev<br>The United States and Iraq's interim government have reached an agreement with Syria on ways to patrol its porous border with Iraq, and it's now up to Damascus to begin deploying forces.<P></UL>
+<UL>
+<B>5. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329330.html">4-Star Plans After Abu Ghraib</A></B><BR>
+<EM>(Los Angeles Times)</EM>...John Hendren<br> The Pentagon plans to promote Army Lt. Gen. Ricardo Sanchez, former head of military operations in Iraq, risking a confrontation with members of Congress because of the prisoner abuses that occurred during his tenure.<P></UL>
+<UL>
+<B>6. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329288.html">Chemicals Sickened '91 Gulf War Veterans, Latest Study Finds</A></B><BR>
+<EM>(New York Times)</EM>...Scott Shane<br>A federal panel of medical experts studying illnesses among veterans of the 1991 war in the Persian Gulf has broken with several earlier studies and concluded that many suffer from neurological damage caused by exposure to toxic chemicals, rejecting past findings that the ailments resulted mostly from wartime stress.<P></UL>
+</div><div>&bull; <A onclick="showhide('iraq');" href="javascript:void(0);">IRAQ</A></div>
+                   <DIV id="iraq" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>7. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329172.html">Blasts Inside Green Zone Kill At Least 5</A></B><BR>
+<EM>(Washington Post)</EM>...Steve Fainaru<br> Bombs exploded within moments of each other at a handicraft market and a popular cafe inside Baghdad's fortified Green Zone on Thursday, killing at least five people, including three American civilians. It was the first time insurgents had penetrated the heavily protected area that is the seat of the Iraqi government and home to American officials.<P></UL>
+<UL>
+<B>8. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329375.html">Marine Units Attack Insurgent Targets In Fallujah</A></B><BR>
+<EM>(USA Today)</EM>...Associated Press<br> U.S. Marines launched air and ground attacks Thursday on the insurgent bastion Fallujah after city representatives suspended peace talks over Prime Minister Ayad Allawi's demand to hand over terror mastermind Abu Musab al-Zarqawi.<P></UL>
+<UL>
+<B>9. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329305.html">Finding Only Shadows In Hunt For Insurgents</A></B><BR>
+<EM>(New York Times)</EM>...James Glanz<br>...But nobody was home. While terrorism suspects and militia fighters have routinely slipped away from their pursuers ever since last year's invasion, the sudden emptying of whole towns before unannounced raids appears to be a new phenomenon.<P></UL>
+<UL>
+<B>10. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329102.html">Marines Cohabit, Bond With Former Enemies</A></B><BR>
+<EM>(Chicago Tribune)</EM>...Rick Jervis<br>...Enemies during the two-week battle for Nasiriyah in southern Iraq in late March and early April of 2003, the Marines and Iraqis now find themselves on the same side of the razor wire in a partnership that U.S. officials are trying to replicate throughout Iraq, one that pairs U.S. training and discipline with indigenous forces. Military officials say such partnerships are a vital step in the hand-over of security responsibilities to Iraqis. But the relationships sometimes come with baggage.<P></UL>
+<UL>
+<B>11. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329346.html">U.S. Troops Facing Attacks From Syria</A></B><BR>
+<EM>(Los Angeles Times)</EM>...Associated Press<br> American troops stationed along Iraq's border with Syria are coming under increasing attack with mortar shells fired from Syrian territory, but it was unclear who was responsible, U.S. officers said Thursday.<P></UL>
+<UL>
+<B>12. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329405.html">Fears Of Violence Rise As Ramadan Celebrated</A></B><BR>
+<EM>(Atlanta Journal-Constitution)</EM>...Eunice Moscoso, George Edmonson, Margaret Coker<br> Muslims in much of the Islamic world marked the beginning of the holy month of Ramadan today amid calls from clerics to focus on spiritual contemplation, repentance and charity.<P></UL>
+<UL>
+<B>13. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329101.html">Power Vacuum Hurt In Iraq, General Says</A></B><BR>
+<EM>(Atlanta Journal-Constitution)</EM>...Ron Martz<br>A lack of effective coordination among military forces that toppled Saddam Hussein and civilian agencies sent to rebuild Iraq slowed initial efforts to bring stability to the country, a top Army general said Wednesday. Lt. Gen. David McKiernan, who commanded more than 140,000 coalition ground forces in the attack on Iraq last year, said the power vacuum left by Saddam's ouster and the subsequent chaos could not be dealt with solely by the military.<P></UL>
+<UL>
+<B>14. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329331.html">Official Says Vote Date 'Not Sacred'</A></B><BR>
+<EM>(Los Angeles Times)</EM>...Staff and Wire Reports<br> A top Iraqi official was quoted Thursday as saying that the Jan. 31 date for elections was "not sacred" and might have to be delayed, despite the insistence of U.S. authorities and of other Iraqi leaders.<P></UL>
+<UL>
+<B>15. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329332.html">Nuclear Thefts Were Expert, Systematic, Diplomats Say</A></B><BR>
+<EM>(Los Angeles Times)</EM>...Associated Press<br> Missing nuclear-related equipment in Iraq was removed by experts working systematically over an extended period, diplomats said Thursday.<P></UL>
+<UL>
+<B>16. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329333.html">Violence Stalls Iraq's Rebuilding</A></B><BR>
+<EM>(Los Angeles Times)</EM>...Bruce Wallace<br> A group of 14 countries that gave international agencies almost $1 billion to meet emergency needs in Iraq was told Thursday that only 5% of the money had been spent because the swirl of violence was blocking the start of badly needed projects.<P></UL>
+<UL>
+<B>17. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329374.html">Baghdad Sanitation Services Improve</A></B><BR>
+<EM>(USA Today)</EM>...Cesar G. Soriano<br> When Army engineer Capt. Tony Hearn arrived in Iraq in March to survey the sanitation situation, he found large areas of Baghdad were literally "a mess."<P></UL>
+<UL>
+<B>18. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329420.html">Envoy Who Snubbed GI Heroes Quits</A></B><BR>
+<EM>(New York Post)</EM>...Niles Lathem<br> Rend al-Rahim Francke, Iraq's ambassador-designate to the United States, has resigned from her historic appointment months after coming under fire for refusing to visit wounded U.S. troops in the hospital.<P></UL>
+</div><div>&bull; <A onclick="showhide('iraqabughraib');" href="javascript:void(0);">IRAQ -- ABU GHRAIB</A></div>
+                   <DIV id="iraqabughraib" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>19. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329181.html">Army Official Backs Ex-Abu Ghraib Officer</A></B><BR>
+<EM>(Washington Post)</EM>...Dana Priest and Bradley Graham<br>The Army's intelligence chief said yesterday that he has "great confidence" in the ability of Maj. Gen. Barbara Fast, the highest-ranking intelligence officer tied to the Abu Ghraib prison scandal, to lead the Army's intelligence school.<P></UL>
+</div><div>&bull; <A onclick="showhide('defensedepartment');" href="javascript:void(0);">DEFENSE DEPARTMENT</A></div>
+                   <DIV id="defensedepartment" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>20. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329376.html">Cleanup Fights Stall New Uses For Old Bases</A></B><BR>
+<EM>(USA Today)</EM>...Peter Eisler<br>...The environmental problems are crushing many communities' best hopes for recovering from the economic blow of losing bases shuttered by the Defense Department in the past 15 years. And they're hindering the Pentagon's efforts to save billions of dollars by getting unused land off its property rolls. As the Pentagon prepares to close dozens more bases in 2005 &#8212; the first round of closures in a decade &#8212; Defense officials are working with Congress to change the rules so communities shoulder more of the responsibility for cleanups.<P></UL>
+<UL>
+<B>21. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329261.html">Pentagon Officials Review Joint Strike Fighter Program</A></B><BR>
+<EM>(Wall Street Journal (wsj.com))</EM>...Rebecca Christie, Dow Jones Newswires<br> Pentagon officials met Thursday to review the F-35 Joint Strike Fighter program, an ambitious international project that has been set back by concerns about airplane weight.<P></UL>
+</div><div>&bull; <A onclick="showhide('army');" href="javascript:void(0);">ARMY</A></div>
+                   <DIV id="army" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>22. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329293.html">U.S. Army Inquiry Implicates 28 Soldiers In Deaths Of 2 Afghan Detainees</A></B><BR>
+<EM>(New York Times)</EM>...Thom Shanker<br>A newly completed Army criminal investigation has implicated 28 active-duty and reserve soldiers in the deaths of two Afghan men detained at the American air base at Bagram in December 2002, and describes potential offenses ranging from involuntary manslaughter to assault to conspiracy, the Army said Thursday.<P></UL>
+<UL>
+<B>23. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329334.html">Army Implicates 28 U.S. Troops In Deaths Of 2 Afghan Detainees</A></B><BR>
+<EM>(Los Angeles Times)</EM>...John Hendren and Mark Mazzetti<br>Some of the soldiers were with the unit that was later involved in the abuse scandal at Iraq's Abu Ghraib prison. The Afghans were beaten.<P></UL>
+</div><div>&bull; <A onclick="showhide('marinecorps');" href="javascript:void(0);">MARINE CORPS</A></div>
+                   <DIV id="marinecorps" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>24. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329221.html">Marine's Overcoming Hardship Recalled</A></B><BR>
+<EM>(Washington Post)</EM>...Leef Smith<br>...Powers, a Marine corporal on inactive reserve, gathered with family at Arlington National Cemetery to inter the ashes of her brother, Lance Cpl. Caleb J. Powers. The 21-year-old Marine was killed Aug. 17 in western Iraq, the victim of an insurgent's bullet as he stood guard at his unit's compound in Al Anbar province. Rosanna Powers was still struggling to cope with her brother's death when she got word that her fiance, Sgt. Richard Lord, 24, the father of her young son, had been killed in Iraq. Lord died Aug. 18, one day after Caleb Powers and also in Al Anbar.<P></UL>
+</div><div>&bull; <A onclick="showhide('navy');" href="javascript:void(0);">NAVY</A></div>
+                   <DIV id="navy" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>25. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329379.html">Pacific Carrier Base Still On Table</A></B><BR>
+<EM>(Honolulu Advertiser)</EM>...William Cole<br>Navy Secretary Gordon England yesterday said there is a "strong desire" to base an aircraft carrier in the Pacific, and Hawai'i and Guam continue to be the only locations looked at, but no decision has been made.<P></UL>
+</div><div>&bull; <A onclick="showhide('airforce');" href="javascript:void(0);">AIR FORCE</A></div>
+                   <DIV id="airforce" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>26. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329234.html">Air Force Widens Boeing Review</A></B><BR>
+<EM>(Wall Street Journal)</EM>...Andy Pasztor<br>Fallout from the Air Force procurement scandal continues to spread, with Pentagon officials scouring scores of contracts stretching back nearly a decade to determine if former Air Force acquisition official Darleen Druyun improperly favored Boeing Co., people familiar with the matter said.<P></UL>
+</div><div>&bull; <A onclick="showhide('missiledefense');" href="javascript:void(0);">MISSILE DEFENSE</A></div>
+                   <DIV id="missiledefense" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>27. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329382.html">Boeing Missile-Defense System May Be Ready In 2004</A></B><BR>
+<EM>(Bloomberg.com)</EM>...Tony Capaccio<br>Boeing Co.'s new ground-based system for detecting and destroying missiles fired from North Korea may be declared ready for operations within 12 weeks, the military program manager said today.<P></UL>
+</div><div>&bull; <A onclick="showhide('congress');" href="javascript:void(0);">CONGRESS</A></div>
+                   <DIV id="congress" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>28. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329367.html">Senator Calls For More Troops In Iraq</A></B><BR>
+<EM>(Baltimore Sun)</EM>...Tom Bowman<br>A member of the Senate Armed Services Committee is pressing Defense Secretary Donald H. Rumsfeld for more troops to protect the largest U.S. supply base in Iraq - dubbed "Mortaritaville" because of the frequency of mortar and rocket attacks - after the base commander's requests for more troops were rejected.<P></UL>
+<UL>
+<B>29. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329378.html">Four Inquiries Into Anthrax Allegations Demanded</A></B><BR>
+<EM>(Wilmington (DE) News Journal)</EM>...Lee Williams and Hiran Ratnayake<br>Delaware's congressional delegation officially called for four investigations Thursday into allegations that Dover Air Force Base pilots and crews were used as guinea pigs to test experimental anthrax vaccine.<P></UL>
+<UL>
+<B>30. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329315.html">Sept. 11 Panel's Chief Wants Help From Bush</A></B><BR>
+<EM>(New York Times)</EM>...Philip Shenon<br>The chairman of the independent Sept. 11 commission called on President Bush on Thursday to become personally involved in pressuring Congress to overhaul the nation's intelligence community, warning that the legislation recommended by the panel might die in Congress without Mr. Bush's intervention before the election next month.<P></UL>
+</div><div>&bull; <A onclick="showhide('afghanistan');" href="javascript:void(0);">AFGHANISTAN</A></div>
+                   <DIV id="afghanistan" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>31. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329303.html">Counting Begins In Afghan Presidential Election</A></B><BR>
+<EM>(New York Times)</EM>...Carlotta Gall<br>Election workers began counting ballots on Thursday, five days after the country's first presidential election was marred by accusations of fraud and calls for a boycott by 15 candidates ranged against President Hamid Karzai.<P></UL>
+<UL>
+<B>32. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329277.html">Peaceful Vote Diminishes Taliban</A></B><BR>
+<EM>(Christian Science Monitor)</EM>...Scott Baldauf<br> Afghanistan's first ever presidential elections were an unmitigated disaster - if you're a hard-core Taliban fighter.<P></UL>
+<UL>
+<B>33. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329380.html">Turkey To Send 1,800 Troops To Afghanistan</A></B><BR>
+<EM>(DefenseNews.com)</EM>...Burak Ege Bekdil<br>The Turkish military will contribute an additional 1,800 troops to an international peacekeeping force in Afghanistan.<P></UL>
+</div><div>&bull; <A onclick="showhide('asiapacific');" href="javascript:void(0);">ASIA/PACIFIC</A></div>
+                   <DIV id="asiapacific" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>34. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329302.html">Pakistan Raid Frees 3 Hostages; Another Dies</A></B><BR>
+<EM>(New York Times)</EM>...Salman Masood<br>Pakistani commandos stormed the hideout of Islamic militants in northwestern Pakistan on Thursday, freeing one Chinese hostage and killing five of the kidnappers, government officials said. Another Chinese hostage was killed, and the militants' reputed leader, a Pakistani recently released from American custody in Guant&#225;namo Bay, Cuba, remained at large.<P></UL>
+<UL>
+<B>35. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329256.html">Pakistan's Parliament Passes Bill To Allow Musharraf To Remain As Army Chief</A></B><BR>
+<EM>(Wall Street Journal)</EM>...Associated Press<br> Pakistan's parliament passed a bill Thursday allowing President Gen. Pervez Musharraf to remain as army chief, despite his earlier promise to step down from the post.<P></UL>
+<UL>
+<B>36. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329342.html">Border Agreement OKd During Putin's Visit</A></B><BR>
+<EM>(Los Angeles Times)</EM>...Times Wire Reports<br>China and Russia settled the last of their border disputes and signed an agreement fixing their 2,600-mile frontier during a visit to Beijing by Russian President Vladimir V. Putin.<P></UL>
+</div><div>&bull; <A onclick="showhide('mideast');" href="javascript:void(0);">MIDEAST</A></div>
+                   <DIV id="mideast" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>37. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329196.html">G-8 Nations To Meet On Iran</A></B><BR>
+<EM>(Washington Post)</EM>...Robin Wright and Dafna Linzer<br>After weeks of behind-the-scenes diplomacy, the United States will meet here today with the world's wealthiest countries to determine a strategy for giving Iran one last chance to abandon its alleged nuclear arms program or face new international pressures.<P></UL>
+<UL>
+<B>38. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329131.html">Bushehr Completed</A></B><BR>
+<EM>(Moscow Times)</EM>...Reuters<br> The Federal Atomic Energy Agency said Thursday it had finished construction of the Bushehr nuclear power plant in southern Iran -- a project the United States fears Tehran could use to make nuclear arms.<P></UL>
+</div><div>&bull; <A onclick="showhide('africa');" href="javascript:void(0);">AFRICA</A></div>
+                   <DIV id="africa" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>39. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329427.html">Somalia: New Leader Calls For Peacekeepers</A></B><BR>
+<EM>(New York Times)</EM>...Reuters<br>At his swearing in in neighboring Kenya, Somalia's new president, Abdullahi Yusuf, called on the world to send peacekeepers to disarm the rival militias that rule his country.<P></UL>
+</div><div>&bull; <A onclick="showhide('russia');" href="javascript:void(0);">RUSSIA</A></div>
+                   <DIV id="russia" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>40. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329419.html">Russia And Nato In Antiterror Deal</A></B><BR>
+<EM>(London Financial Times)</EM>...Paul Brasov<br>Sergei Ivanov, Russia's defence minister, yesterday agreed to new anti-terrorist efforts with Nato, but warned western countries not to apply "double standards" in the fight against terrorism.<P></UL>
+</div><div>&bull; <A onclick="showhide('business');" href="javascript:void(0);">BUSINESS</A></div>
+                   <DIV id="business" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>41. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329343.html">U.S. Endorses Audit Of Some Halliburton Pacts</A></B><BR>
+<EM>(Los Angeles Times)</EM>...Times Wire Reports<br>Washington has agreed to commission a special audit of sole-source Pentagon contracts granted to Halliburton Co. and paid for with Iraqi oil money, an international watchdog agency said.<P></UL>
+<UL>
+<B>42. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329377.html">Iraq Seeks To Enter Global Economy Via WTO</A></B><BR>
+<EM>(Washington Times)</EM>...Jeffrey Sparshott<br>Iraq's interim government is pressing for closer ties to the global economy with a request to join the World Trade Organization.<P></UL>
+<UL>
+<B>43. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329381.html">U.S. Said Set To Move On Pakistan's Long F-16 Quest</A></B><BR>
+<EM>(Washingtonpost.com)</EM>...Jim Wolf, Reuters<br> The Bush administration is planning to consult Congress on Pakistan's nearly 15-year quest for advanced F-16 fighter aircraft, a U.S. defense official said on Thursday, in a prelude to what may be a delicate balancing act with rival India.<P></UL>
+</div><div>&bull; <A onclick="showhide('opinion');" href="javascript:void(0);">OPINION</A></div>
+                   <DIV id="opinion" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>44. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329268.html">Paralyzed, A Soldier Asks Why</A></B><BR>
+<EM>(New York Times)</EM>...Bob Herbert<br>Sunlight was pouring through the doorway to the furnished basement of the neat two-story home on Reardon Lane. The doorway had been widened to accommodate the wheelchair of Army Staff Sgt. Eugene Simpson Jr., who was once a star athlete but now, at age 27, spends a lot of time in his parents' basement, watching the large flat-screen TV.<P></UL>
+<UL>
+<B>45. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329273.html">Iraq's New Power Couple</A></B><BR>
+<EM>(New York Times)</EM>...Bartle Breese Bull<br>...Thus Mr. Sadr's new direction, like his efforts in Najaf, is not a military move but a political one. Just as most of his country's violence consists of Iraqi attacks against fellow Iraqis, the basic fact of Iraqi politics is not opposition to the occupation, but maneuvering between Iraqis in the game of sectarian and ethnic politics. Meanwhile, Ahmad Chalabi's resurgence is natural. While American officials have been embarrassed by reports that he convinced them of exaggerated claims about Saddam Hussein's weapons, most Iraqis do not care if he hoodwinked Washington.<P></UL>
+<UL>
+<B>46. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329257.html">Facing Our Madrid</A></B><BR>
+<EM>(WeeklyStandard.com)</EM>...Powl Smith<br>...But even as these reports about the violence grow ever more strident, what's missing is any discussion about why attacks are increasing. The "why" is obvious to those of us over here facing the danger every day. It isn't because the terrorists are winning--far from it.<P></UL>
+<UL>
+<B>47. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329354.html">How To Rein In Iran Without Bombing It</A></B><BR>
+<EM>(Los Angeles Times)</EM>...Patrick Clawson<br>...What America can do &#8212; both on its own and with allies &#8212; is to contain and deter Iran. Steps to this end could include increasing U.S. military presence around Iran; putting nuclear weapons on U.S. ships off Iran's coast; reinforcing the region's protection against missiles (including accelerating the planned improvement to the Arrow antimissile system in Israel); extending an explicit nuclear umbrella to those threatened by Iran; transferring more advanced weapons to states around Iran (from NATO ally Turkey to the new Iraqi forces to the more stable Arab Gulf states); and so on.<P></UL>
+<UL>
+<B>48. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329413.html">Bunker-Buster Brouhaha</A></B><BR>
+<EM>(New York Post)</EM>...Peter Brookes<br>President Bush and Sen. John Kerry agree upon one thing &#8212; at least for the moment: The proliferation of weapons of mass destruction (WMD), especially into the hands of terrorists, is the single <i>great</i><i>est</i> threat to American national security.<P></UL>
+</div><div>&bull; <A onclick="showhide('editorial');" href="javascript:void(0);">EDITORIAL</A></div>
+                   <DIV id="editorial" style="DISPLAY: none; VISIBILITY: hidden">
+<UL>
+<B>49. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329211.html">Remember Abu Ghraib?</A></B><BR>
+<EM>(Washington Post)</EM>...Editorial<br>IN THE PAST few weeks the presidential candidates have debated almost every aspect of the war on terrorism save one: the handling of detainees in Iraq and Afghanistan.<P></UL>
+<UL>
+<B>50. <A target="_blank" HREF="http://ebird.afis.osd.mil/ebfiles/e20041015329366.html">Learning From Afghanistan</A></B><BR>
+<EM>(Baltimore Sun)</EM>...Editorial<br>...Can it happen again in Iraq, in January? Possibly, but the odds are prohibitive. The differences between the two countries -- though similar in population size -- are immense, and Iraq suffers by nearly every important comparison. The most important ingredient in Afghanistan was a strong desire by the Afghan people to take part.<P></UL>
+
+</div>

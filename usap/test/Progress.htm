@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+
+<style type="text/css">
+
+div.smallish-progress-wrapper
+ { position: relative;
+   border: 1px solid black; }
+
+div.smallish-progress-bar
+ { position: absolute;
+   top: 0; left: 0;
+   height: 100%; }
+
+div.smallish-progress-text
+ { text-align: center;
+   position: relative; }
+
+</style>
+
+<script type="text/javascript">  
+   function ProgressBar(width, percent)  {  
+     var pixels = width * (percent / 100);
+     var red    = '#ff0000';
+     var green  = '#33cc33';
+     var yellow = '#ffff33';
+
+     if (percent <= 75)
+       color = red;
+     else
+       if (percent <= 85)
+         color = yellow;
+       else
+         color = red;
+      
+     document.write('<div class="smallish-progress-wrapper" style="width: ' + width + 'px">');  
+     document.write('<div class="smallish-progress-bar" style="width: ' + pixels + 'px; background-color: ' + color + ';"></div>');  
+     document.write('<div class="smallish-progress-text" style="width: ' + width + 'px">' + percent + '%</div>');  
+     document.write('</div>');  }  
+</script>
+
+</HEAD>
+<body>
+Look This:<br/>
+<script type="text/javascript">ProgressBar(300, 76);</script>
+
+
+</body>
+</HTML>
