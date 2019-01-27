@@ -14,7 +14,7 @@
             <a href="bills/?db=Property">Property</a><br />
             <a href="shoppinglist">Shop</a><br />
             <a href="SimplySilverAKY">SSA</a><br />
-            <a href="http://192.168.1.101:5000/?launchApp=SYNO.SDS.VideoStation.AppInstance">Video Station</a><br />
+            <a href="https://QuickConnect.to/smartretard247/?launchApp=SYNO.SDS.VideoStation.AppInstance">Video Station</a><br />
             <a href="wow_wotlk">WoW WOTLK</a><br />
           </td>
           <td style="width: 50%;" valign="top">
@@ -25,7 +25,7 @@
             <a href="http://www.gmail.com/">Gmail</a><br />
             <a href="http://www.hotmail.com">Hotmail</a><br />
             <a href="https://mypay.dfas.mil/mypay.aspx">My Pay</a><br />
-            <a href="http://QuickConnect.to/smartretard247">Synology</a><br />
+            <a href="https://QuickConnect.to/smartretard247">Synology</a><br />
             <a href="http://www.usaa.com/">USAA</a><br />
           </td>
         </tr>
